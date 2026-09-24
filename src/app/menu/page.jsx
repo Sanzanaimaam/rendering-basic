@@ -1,0 +1,17 @@
+import React from 'react';
+import FoodCard from '../components/FoodCard';
+
+const MenuPage = async() => {
+
+    const res= await fetch('https://phi-lab-server.vercel.app/api/v1/lab/foods/top-foods')
+    const data=await res.json()
+    return (
+        <div className=' grid grid-cols-3 gap-4'>
+            {
+                data.data.map(food=> <FoodCard key={food.id} item={food}></FoodCard> )
+            }
+        </div>
+    );
+};
+
+export default MenuPage;
